@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive U - About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      background: #000;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 25px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffae42;
+    }
+
+    .user-account {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 50vh;
+      width: 100%;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/about1.avif');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-content h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* About Content */
+    .about-container {
+      padding: 80px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 36px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      border-radius: 2px;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #ffae42;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .about-image {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(255, 157, 0, 0.2);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Mission & Vision */
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .mission, .vision {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+
+    .mission:hover, .vision:hover {
+      transform: translateY(-10px);
+    }
+
+    .mission h3, .vision h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ffae42;
+      display: flex;
+      align-items: center;
+    }
+
+    .mission h3 i, .vision h3 i {
+      margin-right: 10px;
+      font-size: 28px;
+    }
+
+    /* Values */
+    .values {
+      margin-bottom: 80px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 157, 0, 0.2);
+    }
+
+    .value-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+    }
+
+    .value-card h4 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #ffae42;
+    }
+
+    .value-card p {
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    /* Team Section */
+    .team {
+      margin-bottom: 80px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .team-member {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(255, 157, 0, 0.2);
+    }
+
+    .team-img {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .team-member:hover .team-img img {
+      transform: scale(1.1);
+    }
+
+    .team-info {
+      padding: 20px;
+    }
+
+    .team-info h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #ffae42;
+    }
+
+    .team-info p {
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      transform: translateY(-3px);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/about2.avif');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 0;
+      text-align: center;
+      border-radius: 15px;
+    }
+
+    .cta-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cta-section p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #ff1a1a, #ff6600);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 157, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #0a0a0a;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 0 60px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #ffae42;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+    }
+
+    .footer-column p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover {
+      color: #ffae42;
+      transform: translateX(5px);
+    }
+
+    .footer-links i {
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: 0 60px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .about-content,
+      .mission-vision {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+      
+      .navbar h1 {
+        font-size: 28px;
+      }
+      
+      .hero-content h2 {
+        font-size: 36px;
+      }
+      
+      .hero-content p {
+        font-size: 18px;
+      }
+      
+      .about-container {
+        padding: 60px 20px;
+      }
+      
+      .footer-content {
+        padding: 0 20px;
+      }
+      
+      .copyright {
+        margin: 0 20px;
+      }
+    }
+
+    /* Team Icons */
+.team-icon {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.1), rgba(255, 153, 0, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.team-icon i {
+  font-size: 70px;
+  color: #ffae42;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.team-member:hover .team-icon i {
+  transform: scale(1.2);
+  color: #ff4d4d;
+}
+
+.team-member:hover .team-icon::before {
+  opacity: 1;
+}
+
+/* Adjust team info padding for better alignment */
+.team-info {
+  padding: 25px 20px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>DRIVE U</h1>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="economy.html">Economy</a>
+      <a href="premium.html">Premium</a>
+      <a href="luxury.html">Luxury</a>
+      <div class="user-account" onclick="toggleUserMenu()">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-name" id="user-name">Guest</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>About Drive U</h2>
+      <p>Your trusted partner in car rental services with a commitment to excellence</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <div class="about-container">
+    <h2 class="section-title">Our Story</h2>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Driving Your Journey Since 2010</h3>
+        <p>Drive U was founded with a simple vision: to provide reliable, affordable, and convenient car rental services to everyone. What started as a small fleet of economy cars has now grown into one of the most trusted car rental companies in the country.</p>
+        <p>Over the years, we've expanded our services to include a wide range of vehicles from economy cars to luxury vehicles, ensuring that we can meet the diverse needs of our customers. Our commitment to quality service and customer satisfaction has been the driving force behind our success.</p>
+        <p>Today, with thousands of satisfied customers and a growing fleet of well-maintained vehicles, we continue to innovate and improve our services to make your travel experience seamless and enjoyable.</p>
+      </div>
+      <div class="about-image">
+        <img src="images/about3.avif" alt="Drive U Fleet">
+      </div>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="mission-vision">
+      <div class="mission">
+        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+        <p>To provide exceptional car rental services that offer convenience, reliability, and value to our customers. We strive to make every journey memorable by ensuring our vehicles are well-maintained, our prices are transparent, and our customer support is always available.</p>
+      </div>
+      <div class="vision">
+        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+        <p>To become the most trusted and preferred car rental service provider by continuously innovating our services, expanding our fleet, and maintaining the highest standards of customer satisfaction. We aim to be the go-to choice for all transportation needs.</p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="values">
+      <h2 class="section-title">Our Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4>Safety First</h4>
+          <p>Your safety is our top priority. All our vehicles undergo regular maintenance and safety checks.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h4>Customer Centric</h4>
+          <p>We put our customers at the heart of everything we do, ensuring their needs are always met.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h4>Quality Service</h4>
+          <p>We are committed to delivering the highest quality service with attention to every detail.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h4>Innovation</h4>
+          <p>We continuously innovate to improve our services and enhance your experience.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <!-- Team Section -->
+<div class="team">
+  <h2 class="section-title">Meet Our Team</h2>
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="team-icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div class="team-info">
+        <h4>Rajesh Kumar</h4>
+        <p>Founder & CEO</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-icon">
+        <i class="fas fa-tasks"></i>
+      </div>
+      <div class="team-info">
+        <h4>Priya Sharma</h4>
+        <p>Operations Manager</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <div class="team-info">
+        <h4>Vikram Singh</h4>
+        <p>Fleet Manager</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <div class="team-info">
+        <h4>Anjali Patel</h4>
+        <p>Customer Service Head</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready to Experience the Drive U Difference?</h2>
+      <p>Choose from our wide range of vehicles and enjoy a seamless booking experience with exceptional customer service.</p>
+      <a href="fleet.html" class="btn">Explore Our Fleet</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Drive U</h3>
+        <p>Drive U offers premium car rental services with a wide selection of vehicles to meet all your transportation needs.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="fleet.html"><i class="fas fa-chevron-right"></i> Our Fleet</a></li>
+          <li><a href="economy.html"><i class="fas fa-chevron-right"></i> Economy Cars</a></li>
+          <li><a href="premium.html"><i class="fas fa-chevron-right"></i> Premium Cars</a></li>
+          <li><a href="luxury.html"><i class="fas fa-chevron-right"></i> Luxury Cars</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Main Street, Mumbai</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> +91 98765 43210</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> info@driveu.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Sun: 24/7 Available</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2023 Drive U Car Rental. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Get the username from localStorage
+    const userName = localStorage.getItem('userName') || 'Guest';
+    
+    // Update the user name display
+    document.getElementById('user-name').textContent = userName;
+    
+    // Toggle user menu (for future functionality)
+    function toggleUserMenu() {
+      alert('User account menu would open here. In a complete application, this would show options like Profile, Settings, and Logout.');
+    }
+  </script>
+
+</body>
+</html>

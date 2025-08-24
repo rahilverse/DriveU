@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive U - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Background Video */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .login-box {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 80px;
+      z-index: 1;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 380px;
+      color: #fff;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #f5f5f5;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .form-container input::placeholder {
+      color: #ddd;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-container button:hover {
+      background: linear-gradient(135deg, #ff1a1a, #ff6600);
+      transform: translateY(-2px);
+    }
+
+    .form-container p {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .form-container a {
+      color: #ffae42;
+      text-decoration: none;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .form-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hide forms initially */
+    #signup-form {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop class="video-bg">
+    <source src="videos/video.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Login / Signup Box -->
+  <div class="login-box">
+    <!-- Login Form -->
+    <div class="form-container" id="login-form">
+      <h2>Login to Drive U</h2>
+      <form onsubmit="handleLogin(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a onclick="showSignup()">Sign Up</a></p>
+      </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="form-container" id="signup-form">
+      <h2>Sign Up for Drive U</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+        <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    
+    // Show signup form
+    function showSignup() {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("signup-form").style.display = "block";
+    }
+
+    // Show login form
+    function showLogin() {
+      document.getElementById("signup-form").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+    }
+
+    // Handle login
+    function handleLogin(event) {
+      event.preventDefault();
+      
+      // Get the entered username and password
+      const username = document.getElementById('username').value;
+      const password = document.querySelector('#login-form input[type="password"]').value;
+      
+      // Check for admin credentials
+      if (username === "admin_1" && password === "admin001") {
+        // Store the username in localStorage to pass to admin page
+        localStorage.setItem('userName', username);
+        
+        // Redirect to admin page
+        window.location.href = 'admin.html';
+        return;
+      }
+      
+      // Regular user login
+      // Store the username in localStorage to pass to home page
+      localStorage.setItem('userName', username);
+      
+      // Redirect to home page
+      window.location.href = 'home.html';
+    }
+
+  </script>
+
+</body>
+</html>

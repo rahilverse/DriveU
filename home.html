@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive U - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .navbar h1 {
+      color: #fff;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 25px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffae42;
+    }
+
+    .user-account {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    .user-name {
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Slider */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      animation: slide 16s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0% {margin-left: 0;}
+      20% {margin-left: 0;}
+      25% {margin-left: -100%;}
+      45% {margin-left: -100%;}
+      50% {margin-left: -200%;}
+      70% {margin-left: -200%;}
+      75% {margin-left: -300%;}
+      95% {margin-left: -300%;}
+      100% {margin-left: 0;}
+    }
+
+    /* Overlay text */
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      z-index: 5;
+    }
+
+    .overlay-text h2 {
+      font-size: 50px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .overlay-text p {
+      font-size: 18px;
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
+
+    .overlay-text a {
+      display: inline-block;
+      padding: 12px 25px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ff4d4d, #ff9900);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .overlay-text a:hover {
+      background: linear-gradient(135deg, #ff1a1a, #ff6600);
+    }
+
+    /* Dark overlay on images */
+    .slider::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+
+    /* Improved Welcome Message */
+    .welcome-message {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px 30px;
+      border-radius: 50px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      animation: fadeIn 1s ease-out;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .welcome-icon {
+      color: #ff6600;
+      font-size: 20px;
+    }
+
+    .welcome-message p {
+      margin: 0;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .welcome-message p span {
+      color: #ff6600;
+      font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translate(-50%, 0); }
+      to { opacity: 0; transform: translate(-50%, -20px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Message -->
+  <div class="welcome-message" id="welcome-msg">
+    <div class="welcome-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <p>Welcome, <span id="user-display-name">User</span>!</p>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>DRIVE U</h1>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="user-account" onclick="toggleUserMenu()">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="user-name" id="user-name">Guest</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="images/bmw.avif" alt="Car 1">
+      <img src="images/car1.avif" alt="Car 2">
+      <img src="images/pexels-albinberlin-919073.jpg" alt="Car 3">
+      <img src="images/car3.avif" alt="Car 4">
+    </div>
+
+    <!-- Overlay text -->
+    <div class="overlay-text">
+      <h2>Rent Your Dream Car</h2>
+      <p>Luxury • Comfort • Style</p>
+      <a href="fleet.html">Book Now</a>
+    </div>
+  </div>
+
+  <script>
+    // Get the username from localStorage
+    const userName = localStorage.getItem('userName') || 'User';
+    
+    // Update the welcome message and user name display
+    document.getElementById('user-display-name').textContent = userName;
+    document.getElementById('user-name').textContent = userName;
+    
+    // Hide welcome message after 3 seconds with smooth animation
+    setTimeout(() => {
+      const welcomeMsg = document.getElementById('welcome-msg');
+      welcomeMsg.style.animation = 'fadeOut 0.5s ease-in forwards';
+      setTimeout(() => {
+        welcomeMsg.style.display = 'none';
+      }, 500);
+    }, 3000);
+    
+    // Toggle user menu (for future functionality)
+    function toggleUserMenu() {
+      alert('User account menu would open here. In a complete application, this would show options like Profile, Settings, and Logout.');
+    }
+  </script>
+
+</body>
+</html>
